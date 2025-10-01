@@ -1,0 +1,6 @@
+# Node / system files (not needed but safe)
+.DS_Store
+.vscode/
+node_modules/
+*.log
+/uploads/

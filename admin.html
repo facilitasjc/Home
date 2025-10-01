@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Facilita Vendas SJC</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="Facilita Vendas SJC" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Facilita Vendas <span>SJC</span></h1>
+                        <p>Painel Administrativo</p>
+                    </div>
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="veiculos.html" class="nav-link">Veículos</a></li>
+                        <li><a href="sobre.html" class="nav-link">Sobre</a></li>
+                        <li><a href="contato.html" class="nav-link">Contato</a></li>
+                        <li><a href="admin.html" class="nav-link admin-btn active">➕ Adicionar Carro</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Section -->
+    <section class="admin-section">
+        <div class="container">
+            <div class="admin-header">
+                <h2>Cadastrar Novo Veículo</h2>
+                <p>Adicione um novo carro ao estoque</p>
+            </div>
+
+            <form class="car-form" id="carForm" enctype="multipart/form-data">
+                <div class="form-grid">
+                    <!-- Informações Básicas -->
+                    <div class="form-group">
+                        <label for="carNome">Nome do Modelo *</label>
+                        <input type="text" id="carNome" name="nome" required placeholder="Ex: 208, Gol, Civic">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carVersao">Versão/Descrição *</label>
+                        <input type="text" id="carVersao" name="versao" required placeholder="Ex: 1.6 16V 4P FLEX GRIFFE AUTOMÁTICO">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carAno">Ano/Modelo *</label>
+                        <input type="text" id="carAno" name="ano" required placeholder="Ex: 2022/2023">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carCombustivel">Combustível *</label>
+                        <select id="carCombustivel" name="combustivel" required>
+                            <option value="">Selecione...</option>
+                            <option value="Gasolina">Gasolina</option>
+                            <option value="Álcool">Álcool</option>
+                            <option value="Flex">Flex</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Elétrico">Elétrico</option>
+                            <option value="Híbrido">Híbrido</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carKm">Quilometragem (KM) *</label>
+                        <input type="text" id="carKm" name="km" required placeholder="Ex: 35.500">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carCambio">Câmbio *</label>
+                        <select id="carCambio" name="cambio" required>
+                            <option value="">Selecione...</option>
+                            <option value="Manual">Manual</option>
+                            <option value="Automático">Automático</option>
+                            <option value="Automático Sequencial">Automático Sequencial</option>
+                            <option value="CVT">CVT</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carPreco">Preço (R$) *</label>
+                        <input type="text" id="carPreco" name="preco" required placeholder="Ex: 74.500">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carDestaque">
+                            <input type="checkbox" id="carDestaque" name="destaque">
+                            Destacar este veículo na página inicial
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Upload de Imagem -->
+                <div class="image-upload-section">
+                    <h3>Foto do Veículo</h3>
+                    <div class="image-upload-area" id="imageUploadArea">
+                        <div class="upload-placeholder">
+                            <span>📷</span>
+                            <p>Clique para selecionar ou arraste uma imagem</p>
+                            <small>Formatos: JPG, PNG, GIF (Máx. 5MB)</small>
+                        </div>
+                        <input type="file" id="carImagem" name="imagem" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="image-preview" id="imagePreview" style="display: none;">
+                        <img id="previewImage" src="" alt="Preview">
+                        <button type="button" class="btn btn-danger btn-small" onclick="removeImage()">🗑️ Remover</button>
+                    </div>
+                </div>
+
+                <!-- Botões de Ação -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-large">💾 Salvar Veículo</button>
+                    <button type="button" class="btn btn-outline" onclick="limparFormulario()">🔄 Limpar</button>
+                    <a href="veiculos.html" class="btn btn-secondary">👁️ Ver Estoque</a>
+                </div>
+            </form>
+
+            <!-- Lista de Veículos Cadastrados -->
+            <div class="cars-list-section">
+                <h3>Veículos Cadastrados</h3>
+                <div class="admin-cars-grid" id="adminCarsGrid">
+                    <!-- Lista de carros será carregada aqui -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/database.js"></script>
+    <script src="js/imageUpload.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
